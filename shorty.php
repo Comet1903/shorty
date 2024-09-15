@@ -285,6 +285,17 @@ class Shorty {
     }
 
     /**
+     * Sends a 400 response.
+     */
+    public function bad_request() {
+        header('Status: 400 Bad Request');
+        exit(
+            '<h1>400 Bad Request</h1>'.
+            str_repeat(' ', 512)
+        );
+    }
+
+    /**
      * Sends an error message.
      *
      * @param string $message Error message
@@ -389,6 +400,9 @@ class Shorty {
                 else {
                     $this->not_found();
                 }
+            }
+            else {
+                $this->bad_request();
             }
         }
     }
